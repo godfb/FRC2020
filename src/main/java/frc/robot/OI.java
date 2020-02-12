@@ -47,28 +47,28 @@ public class OI {
     public OI() {
         joystick1 = new Joystick(0);
 
-        pickUpButton2 = new JoystickButton(joystick1, 2);
-        pickUpButton2.whileHeld(new PickUp());
-        dumpButton3 = new JoystickButton(joystick1, 3);
-        dumpButton3.whileHeld(new Dump());
-        elevatorLowerButton5 = new JoystickButton(joystick1, 5);
-        elevatorLowerButton5.whileHeld(new LowerElevator());
-        elevatorUpButton6 = new JoystickButton(joystick1, 6);
-        elevatorUpButton6.whileHeld(new LiftElevator());
-        lowGearButton7 = new JoystickButton(joystick1, 7);
-        lowGearButton7.whileHeld(new LowGear());
-        turboButton8 = new JoystickButton(joystick1, 8);
-        turboButton8.whileHeld(new Turbo());
+        // pickUpButton2 = new JoystickButton(joystick1, 2);
+        // pickUpButton2.whileHeld(new PickUp());
+        // dumpButton3 = new JoystickButton(joystick1, 3);
+        // dumpButton3.whileHeld(new Dump());
+        // elevatorLowerButton5 = new JoystickButton(joystick1, 5);
+        // elevatorLowerButton5.whileHeld(new LowerElevator());
+        // elevatorUpButton6 = new JoystickButton(joystick1, 6);
+        // elevatorUpButton6.whileHeld(new LiftElevator());
+        // lowGearButton7 = new JoystickButton(joystick1, 7);
+        // lowGearButton7.whileHeld(new LowGear());
+        // turboButton8 = new JoystickButton(joystick1, 8);
+        // turboButton8.whileHeld(new Turbo());
 
 
-        // SmartDashboard Buttons
-        SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        SmartDashboard.putData("Lift Elevator", new LiftElevator());
-        SmartDashboard.putData("Lower Elevator", new LowerElevator());
-        SmartDashboard.putData("Dump", new Dump());
-        SmartDashboard.putData("Pick Up", new PickUp());
-        SmartDashboard.putData("Turbo", new Turbo());
-        SmartDashboard.putData("Low Gear", new LowGear());
+        // // SmartDashboard Buttons
+        // SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
+        // SmartDashboard.putData("Lift Elevator", new LiftElevator());
+        // SmartDashboard.putData("Lower Elevator", new LowerElevator());
+        // SmartDashboard.putData("Dump", new Dump());
+        // SmartDashboard.putData("Pick Up", new PickUp());
+        // SmartDashboard.putData("Turbo", new Turbo());
+        // SmartDashboard.putData("Low Gear", new LowGear());
 
     }
     public Joystick getJoystick1() {

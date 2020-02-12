@@ -24,11 +24,11 @@ public class Robot extends TimedRobot {
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
 
-    public static OI oi;
-    public static DriveTrain driveTrain;
     public static Elevator elevator;
     public static DumpMech dumpMech;
     public static PickupMech pickupMech;
+    public static OI oi;
+    public static DriveTrain driveTrain;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -36,10 +36,10 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        driveTrain = new DriveTrain();
-        elevator = new Elevator();
         dumpMech = new DumpMech();
+        driveTrain = new DriveTrain();
         pickupMech = new PickupMech();
+        elevator = new Elevator();
 
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
@@ -69,6 +69,7 @@ public class Robot extends TimedRobot {
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        driveTrain.auto();
     }
 
     /**
