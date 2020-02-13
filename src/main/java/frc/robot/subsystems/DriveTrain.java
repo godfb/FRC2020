@@ -35,6 +35,7 @@ public class DriveTrain extends Subsystem {
     private AnalogGyro analogGyro1;
     private Servo leftServo1;
     private Servo rightServo2;
+    private int servoAngle = 5;
     private Encoder leftQuadratureEncoder1;
     private Encoder rightQuadratureEncoder1;
     public OI interf = new OI();
@@ -132,23 +133,45 @@ public class DriveTrain extends Subsystem {
 
     }
 
+    private void turnServo(Servo servo, int angle){
+        double shiftThreshold = .05;
+        if (    Math.abs(speedController1.get()) > shiftThreshold &&
+                Math.abs(speedController2.get()) > shiftThreshold &&
+                Math.abs(speedController3.get()) > shiftThreshold &&
+                Math.abs(speedController4.get()) > shiftThreshold){
+                        servo.setAngle(angle);
+
+        }
+        else{
+            servo.setDisabled();
+        }
+    }
+
     @Override
     public void periodic() {
 
         double leftSpeed = interf.joystick1.getRawAxis(1);
         double rightSpeed = interf.joystick1.getRawAxis(3);
-
-        if( interf.joystick1.getRawButton(1)){
-            leftServo1.setAngle(0);
-        }
-        else{
-            leftServo1.setAngle(90);
-        }
+        int highGear = 5;
+        int lowGear = 175;
         
         double deadZone = 0;
         double exponentFactor = 1;
         double turboFactor = 2; 
         // double turboSpeed = .9;
+
+        if (interf.joystick1.getRawButtonPressed(1)){
+            if (servoAngle == lowGear) {
+                servoAngle = highGear;
+            }
+            else{
+                servoAngle = lowGear;
+            }
+        }
+
+        turnServo(leftServo1, servoAngle);
+        turnServo(rightServo2, servoAngle);
+
         if (interf.joystick1.getRawButton(8)){turboFactor=1;}
         if (Math.abs(rightSpeed) > deadZone){
             if(rightSpeed < 0){

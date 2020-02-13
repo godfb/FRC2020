@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 
 import frc.robot.commands.*;
+import frc.robot.OI;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -10,8 +11,10 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 
+
 public class Elevator extends Subsystem {
 
+    public OI interf = new OI();
     private Spark elevatorSpeedController9;
 
     public Elevator() {
@@ -28,6 +31,9 @@ public class Elevator extends Subsystem {
 
     @Override
     public void periodic() {
+        interf.joystick1.getRawButtonPressed(4);
+        interf.joystick1.getRawButtonPressed(2);
+
         // Put code here to be run every loop
     }
 }
