@@ -20,7 +20,7 @@ public class Elevator extends Subsystem {
     public Elevator() {
         elevatorSpeedController9 = new Spark(6);
         addChild("Elevator Speed Controller 9",elevatorSpeedController9);
-        elevatorSpeedController9.setInverted(false);
+        elevatorSpeedController9.setInverted(true);
     }
 
     @Override
@@ -31,8 +31,15 @@ public class Elevator extends Subsystem {
 
     @Override
     public void periodic() {
-        interf.joystick1.getRawButtonPressed(4);
-        interf.joystick1.getRawButtonPressed(2);
+        if (interf.joystick1.getRawButton(4)){
+            elevatorSpeedController9.set(.5);
+        }
+        else if (interf.joystick1.getRawButton(2)){
+            elevatorSpeedController9.set(-.5);
+        }
+        else {
+            elevatorSpeedController9.set(0);
+        }
 
         // Put code here to be run every loop
     }
