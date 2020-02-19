@@ -69,6 +69,7 @@ public class Robot extends TimedRobot {
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        //Automously runs the drivetrain
         driveTrain.auto();
     }
 

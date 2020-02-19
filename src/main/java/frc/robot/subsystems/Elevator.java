@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 public class Elevator extends Subsystem {
 
-    public OI interf = new OI();
+    private OI interf = new OI();
     private Spark elevatorSpeedController9;
 
     public Elevator() {
@@ -31,6 +31,10 @@ public class Elevator extends Subsystem {
 
     @Override
     public void periodic() {
+
+        // Raises the elevator when "Y (yellow)" is pressed and held
+        // Lowers the elevator when "A (green)" is pressed and held
+        // Stops the elevator when neither is pressed and held
         if (interf.joystick1.getRawButton(4)){
             elevatorSpeedController9.set(.5);
         }

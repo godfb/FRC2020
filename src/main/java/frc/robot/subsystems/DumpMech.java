@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 
 import frc.robot.commands.*;
+import frc.robot.OI;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -11,7 +12,9 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 public class DumpMech extends Subsystem {
 
+    private OI interf = new OI();
     private PWMVictorSPX dumpMechspeedController10;
+
 
     public DumpMech() {
         dumpMechspeedController10 = new PWMVictorSPX(7);
@@ -26,7 +29,12 @@ public class DumpMech extends Subsystem {
 
     @Override
     public void periodic() {
-        // Put code here to be run every loop
+        if (interf.joystick1.getRawButton(7)){
+            dumpMechspeedController10.set(1);
+        }
+        else {
+            dumpMechspeedController10.set(0);
+        }
 
     }
 
