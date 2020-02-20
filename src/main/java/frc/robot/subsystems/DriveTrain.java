@@ -118,20 +118,20 @@ public class DriveTrain extends Subsystem {
     // This is where auto code is to be placed (Called once in 'autonomousInit' in 'Robot.java')
     // A periodic autonomous function can also be created, but currently isn't.
     public void auto(){
-        speedController1.set(.1);
-        speedController2.set(.1);
-        speedController3.set(.1);
-        speedController4.set(.1);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
+        // speedController1.set(.3);
+        // speedController2.set(.3);
+        // speedController3.set(.3);
+        // speedController4.set(.3);
+        // try {
+        //     Thread.sleep(3000);
+        // } catch (InterruptedException e) {
         
-            e.printStackTrace();
-        }
-        speedController1.set(0);
-        speedController2.set(0);
-        speedController3.set(0);
-        speedController4.set(0);
+        //     e.printStackTrace();
+        // }
+        // speedController1.set(0);
+        // speedController2.set(0);
+        // speedController3.set(0);
+        // speedController4.set(0);
 
     }
 

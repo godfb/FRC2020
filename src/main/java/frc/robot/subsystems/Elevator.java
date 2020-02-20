@@ -29,6 +29,7 @@ public class Elevator extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
 
+    // Called every tick
     @Override
     public void periodic() {
 
@@ -36,10 +37,10 @@ public class Elevator extends Subsystem {
         // Lowers the elevator when "A (green)" is pressed and held
         // Stops the elevator when neither is pressed and held
         if (interf.joystick1.getRawButton(4)){
-            elevatorSpeedController9.set(.5);
+            elevatorSpeedController9.set(.75);
         }
         else if (interf.joystick1.getRawButton(2)){
-            elevatorSpeedController9.set(-.5);
+            elevatorSpeedController9.set(-.75);
         }
         else {
             elevatorSpeedController9.set(0);

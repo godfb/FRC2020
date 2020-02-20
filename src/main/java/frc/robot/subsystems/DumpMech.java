@@ -15,7 +15,6 @@ public class DumpMech extends Subsystem {
     private OI interf = new OI();
     private PWMVictorSPX dumpMechspeedController10;
 
-
     public DumpMech() {
         dumpMechspeedController10 = new PWMVictorSPX(7);
         addChild("Dump Mech Speed Controller 10",dumpMechspeedController10);
@@ -30,14 +29,11 @@ public class DumpMech extends Subsystem {
     @Override
     public void periodic() {
         if (interf.joystick1.getRawButton(7)){
-            dumpMechspeedController10.set(1);
+            dumpMechspeedController10.set(-.5);
         }
         else {
             dumpMechspeedController10.set(0);
         }
-
     }
-
-
-}
+}   
 
