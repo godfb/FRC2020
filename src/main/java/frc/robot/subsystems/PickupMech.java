@@ -15,9 +15,9 @@ public class PickupMech extends Subsystem {
     private PWMVictorSPX pickUpMechspeedController11;
 
     public PickupMech() {
-        pickUpMechspeedController11 = new PWMVictorSPX(8);
-        addChild("Pick Up Mech Speed Controller 11",pickUpMechspeedController11);
-        pickUpMechspeedController11.setInverted(false);
+        // pickUpMechspeedController11 = new PWMVictorSPX(8);
+        // addChild("Pick Up Mech Speed Controller 11",pickUpMechspeedController11);
+        // pickUpMechspeedController11.setInverted(false);
     }
 
     @Override

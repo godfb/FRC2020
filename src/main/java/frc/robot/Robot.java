@@ -15,7 +15,7 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
 
     Command autonomousCommand;
-    SendableChooser<Command> chooser = new SendableChooser<>();
+    SendableChooser<Integer> chooser = new SendableChooser<>();
 
     public static Elevator elevator;
     public static DumpMech dumpMech;
@@ -44,7 +44,9 @@ public class Robot extends TimedRobot {
 
         // Add commands to Autonomous Sendable Chooser
 
-        chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
+        chooser.addOption("Move and deploy", 3);
+        chooser.addOption("Just move", 2);
+        chooser.setDefaultOption("Do nothing", 1);
         SmartDashboard.putData("Auto mode", chooser);
     }
     @Override
@@ -58,11 +60,14 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-        autonomousCommand = chooser.getSelected();
+        int val = chooser.getSelected();
+
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
         //Automously runs the drivetrain
-        driveTrain.auto();
+        System.out.println(val);
+        driveTrain.auto(val);
+        dumpMech.auto(val);
     }
 
     /**

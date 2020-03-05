@@ -21,6 +21,19 @@ public class DumpMech extends Subsystem {
         dumpMechspeedController10.setInverted(false);
     }
 
+    public void auto(int val){
+        if (val == 3){
+            dumpMechspeedController10.set(-.5);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+            
+                e.printStackTrace();
+            }
+            dumpMechspeedController10.set(0);
+        }
+    }
+
     @Override
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -36,13 +36,10 @@ public class DriveTrain extends Subsystem {
     private AnalogGyro analogGyro1;
     private Servo leftServo1;
     private Servo rightServo2;
-    private int servoAngle = 0;
-    private boolean shiftIssued = false;
-    private boolean shifting = false;
+    private int servoAngle = 90;
     private Encoder leftQuadratureEncoder1;
     private Encoder rightQuadratureEncoder1;
     public OI interf = new OI();
-    private Timer shiftTimer = new Timer();
 
     public DriveTrain() {
 
@@ -117,21 +114,30 @@ public class DriveTrain extends Subsystem {
 
     // This is where auto code is to be placed (Called once in 'autonomousInit' in 'Robot.java')
     // A periodic autonomous function can also be created, but currently isn't.
-    public void auto(){
-        // speedController1.set(.3);
-        // speedController2.set(.3);
-        // speedController3.set(.3);
-        // speedController4.set(.3);
-        // try {
-        //     Thread.sleep(3000);
-        // } catch (InterruptedException e) {
+    public void auto(int args){
+        int time = 4100;
+        if (args == 1) {
+            time  = 0;
+        }
+        else if (args == 2){
+            time = 2000;
+        }
+        double speed = -.3;
+
+        speedController1.set(-.3);
+        speedController2.set(-.3);
+        speedController3.set(-.33);
+        speedController4.set(-.33);
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
         
-        //     e.printStackTrace();
-        // }
-        // speedController1.set(0);
-        // speedController2.set(0);
-        // speedController3.set(0);
-        // speedController4.set(0);
+            e.printStackTrace();
+        }
+        speedController1.set(0);
+        speedController2.set(0);
+        speedController3.set(0);
+        speedController4.set(0);
 
     }
 
@@ -151,6 +157,17 @@ public class DriveTrain extends Subsystem {
             turboFactor=1;
         }
         
+        if (interf.joystick1.getRawButtonPressed(3)){
+            if (servoAngle == 90){
+                servoAngle = 180;
+            }
+            else{
+                servoAngle = 90;
+            }
+            
+        }
+        rightServo2.setAngle(servoAngle);
+
         // Checks for dead zone compliance
         if (Math.abs(rightSpeed) > deadZone){
             // Sets the right motor speed to be the thumbstick, set to the exponent and then checks for turbo
